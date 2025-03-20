@@ -8,4 +8,15 @@ export default async function handle(req, res) {
     data: { published: true },
   });
   res.json(post);
+  const { url } = req.query;
+  try {
+    // Make a GET request to the provided URL
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error("Something went wrong...");
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
+
